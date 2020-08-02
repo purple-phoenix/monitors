@@ -2,8 +2,8 @@
 
 Dependencies
 ============
-*Rust/Cargo
-*make
+  *Rust/Cargo
+  *make
 
 Introduction
 ============
