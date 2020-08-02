@@ -7,9 +7,12 @@ Dependencies
 
 Introduction
 ============
+
 A script to load monitor configuration file for gnome. Configuration files are saved at ~/.config/monitors.xml
+
 Examples
 --------
+
 https://github.com/purple-phoenix/configs/tree/master/fedora/monitors
 
 
