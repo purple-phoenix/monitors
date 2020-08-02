@@ -1,4 +1,4 @@
-# monitor_config
+# monitors
 
 Dependencies
 ============
@@ -24,8 +24,8 @@ This is configured once per install, so to change re-install monitor_config with
 
 Installation
 ============
-1. git clone https://github.com/purple-phoenix/monitor_config.git
-2. cd monitor_config
+1. git clone https://github.com/purple-phoenix/monitors.git
+2. cd monitors
 3. make install MONITOR_CONFIG_DIR=xxxx
 
 
