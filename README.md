@@ -31,7 +31,6 @@ Installation
 
 Usage
 =====
-Once installed run
-monitors <regex>
+Once installed run: `monitors <regex>`
 The script looks in the MONITOR_CONFIG_DIR and loads the first configuration file found matching the given regular expression.
 Depending on your regular expression you may need to surround the parameter in quotations. 
