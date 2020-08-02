@@ -32,7 +32,13 @@ fn main() {
                 println!("First match found {}", file_name);
                 let active_monitor_config_file = "/home/mtmccarthy/.config/monitors.xml";
                 println!("Copying {} to {}", file_name, active_monitor_config_file);
-                fs::copy(path, active_monitor_config_file);
+                match fs::copy(path, active_monitor_config_file) {
+                    Ok(_) => (),
+                    Err(_) => {
+                        println!("Failed to copy!");
+                        std::process::exit(-1)
+                    }
+                }
                 if !gnome_process.kill(Signal::Kill) {
                     println!("Failed to kill process:");
                 };
