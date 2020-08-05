@@ -14,13 +14,18 @@ fn main() {
     system.refresh_all();
     let gnome_process = get_process_by_name(&system, "gnome-shell").unwrap();
 
-    match dirs::home_dir() {
-        Some(path) => println!("Detected home directory: {}", path.display()),
+    let home_dir = match dirs::home_dir() {
+        Some(path) => {
+            println!("Detected home directory: {}", path.display());
+            path
+        },
         None => {
             println!("Impossible to get your home dir!");
             std::process::exit(-1)
         },
-    }
+    };
+
+    let home_dir_str = home_dir.to_string_lossy();
 
     for entry in fs::read_dir(monitor_config_dir).unwrap() {
         let entry = entry.unwrap();
@@ -30,9 +35,9 @@ fn main() {
         if file_name.ends_with(".xml") {
             if r.is_match(&file_name) {
                 println!("First match found {}", file_name);
-                let active_monitor_config_file = "/home/mtmccarthy/.config/monitors.xml";
+                let active_monitor_config_file = home_dir_str.clone() + "/.config/monitors.xml";
                 println!("Copying {} to {}", file_name, active_monitor_config_file);
-                match fs::copy(path, active_monitor_config_file) {
+                match fs::copy(path, active_monitor_config_file.as_ref()) {
                     Ok(_) => (),
                     Err(_) => {
                         println!("Failed to copy!");
