@@ -44,9 +44,14 @@ fn main() {
                         std::process::exit(-1)
                     }
                 }
-                if !gnome_process.kill(Signal::Kill) {
-                    println!("Failed to kill process:");
-                };
+                for _ in 1..10 {
+                    let is_killed = gnome_process.kill(Signal::Kill);
+                    if is_killed {
+                        return
+                    }
+                }
+
+                println!("Failed to kill process:");
             }
         }
 
